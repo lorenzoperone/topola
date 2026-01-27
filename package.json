@@ -6,14 +6,14 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "build-demo": "esbuild src/index.ts --bundle --outfile=demo/bundle.js --global-name=topola",
-    "watch": "esbuild src/index.ts --bundle --outfile=demo/bundle.js --global-name=topola --watch",
-    "server": "browser-sync start --server demo --files demo",
+    "build-demo": "esbuild src/index.ts --bundle --outfile=public/bundle.js --global-name=topola",
+    "watch": "esbuild src/index.ts --bundle --outfile=public/bundle.js --global-name=topola --watch",
+    "server": "browser-sync start --server public --files public",
     "start": "concurrently \"npm run watch\" \"npm run server\"",
     "test": "jest",
     "watch-test": "jest --watch",
     "predeploy": "npm run build-demo",
-    "deploy": "gh-pages -d demo",
+    "deploy": "gh-pages -d public",
     "prettier": "prettier --single-quote --write src/**/*.ts && prettier --single-quote --write src/*.ts"
   },
   "author": "Przemek Wiech",

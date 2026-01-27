@@ -18,6 +18,7 @@ import {
 } from './data';
 
 const DEFAULT_SVG_SELECTOR = 'svg';
+const DEFAULT_GEDCOM_URL = 'data/dati.ged';
 
 export interface ChartType {
   new (options: ChartOptions): Chart;
@@ -72,6 +73,11 @@ function createChartOptions(
   const famHrefFunc = chartOptions.famUrl
     ? (id: string) => chartOptions.famUrl!.replace('${id}', id)
     : undefined;
+
+  // Set default GEDCOM URL if not provided
+  if (!chartOptions.indiUrl && !chartOptions.famUrl) {
+    chartOptions.indiUrl = DEFAULT_GEDCOM_URL;
+  }
 
   // If startIndi nor startFam is provided, select the first indi in the data.
   if (!renderOptions.startIndi && !renderOptions.startFam) {
